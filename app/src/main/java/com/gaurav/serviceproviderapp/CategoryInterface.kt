@@ -1,7 +1,5 @@
 package com.gaurav.serviceproviderapp
 
-import java.text.FieldPosition
-
-interface UserInterface {
+interface CategoryInterface {
     fun ListClicked(position:Int)
 }

@@ -19,4 +19,9 @@
         android:id="@+id/categoryandServiceProvider"
         android:name="com.gaurav.serviceproviderapp.CategoryandServiceProvider"
         android:label="CategoryandServiceProvider" />
+    <fragment
+        android:id="@+id/addFragmentCategories"
+        android:name="com.gaurav.serviceproviderapp.AddFragmentCategories"
+        android:label="fragment_categories"
+        tools:layout="@layout/add_layout" />
 </navigation>

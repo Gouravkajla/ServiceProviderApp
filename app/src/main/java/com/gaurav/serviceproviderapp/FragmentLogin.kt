@@ -48,7 +48,10 @@ class FragmentLogin : Fragment() {
         auth= Firebase.auth
         binding=FragmentLoginBinding.inflate(layoutInflater)
 
-        // Inflate the layout for this fragment
+        if(BuildConfig.DEBUG){
+            binding.etEmail.setText("admin@gmail.com")
+            binding.etPassword.setText( "123456")
+        }
         binding.btnLogin.setOnClickListener {
         if (binding.etEmail.text.isNullOrEmpty()){
               binding.etEmail.error="Enter your EMail"
