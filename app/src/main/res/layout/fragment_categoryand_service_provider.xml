@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmenyCategoryandServiceProvider">
+
+    <!-- TODO: Update blank fragment layout -->
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Categories"
+      android:id="@+id/btncategories"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="150dp"
+      />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="service Provider"
+        android:layout_below="@id/btncategories"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>
