@@ -24,4 +24,12 @@
         android:name="com.gaurav.serviceproviderapp.AddFragmentCategories"
         android:label="fragment_categories"
         tools:layout="@layout/add_layout" />
+    <fragment
+        android:id="@+id/fragmentServiceProvider"
+        android:name="com.gaurav.serviceproviderapp.FragmentServiceProvider"
+        android:label="FragmentServiceProvider" />
+    <fragment
+        android:id="@+id/fragmentCustomerList"
+        android:name="com.gaurav.serviceproviderapp.FragmentCustomerList"
+        android:label="FragmentCustomerList" />
 </navigation>

@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.gaurav.serviceproviderapp.databinding.AddLayoutBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -114,6 +115,7 @@ class AddFragmentCategories : Fragment(){
         binding.btnDelete.setOnClickListener {
             db.collection(collectionName).document(categoryModel.key?:"").delete()
                 .addOnSuccessListener {
+                    findNavController().popBackStack()
 //                toast
                 }
                 .addOnFailureListener {
@@ -126,7 +128,9 @@ class AddFragmentCategories : Fragment(){
                 binding.etAddCategory.error="Enter Your Category"
                 binding.etAddCategory.requestFocus()
             }else{
-                if (this::imageUri !=null){
+                categoryModel.name = binding.etAddCategory.text.toString()
+                System.out.println("this::imageUri ${imageUri}")
+                if (imageUri !=null){
                     binding?.llLoader?.visibility = View.VISIBLE
                     val ref = storageRef.reference.child(Calendar.getInstance().timeInMillis.toString())
                     var uploadTask = imageUri?.let {it1 -> ref.putFile(it1) }
@@ -139,7 +143,7 @@ class AddFragmentCategories : Fragment(){
                         }
                         ref.downloadUrl
                     }?.addOnCompleteListener { task ->
-                        binding?.llLoader?.visibility = View.GONE
+                      //  binding?.llLoader?.visibility = View.GONE
 
                         System.out.println("in on complete listener")
                         if (task.isSuccessful) {
@@ -153,68 +157,6 @@ class AddFragmentCategories : Fragment(){
                     AddUpdateCategory()
 
                 }
-
-
-              /*  if (isupdate == true) {
-                    categoryModel.name = binding.etAddCategory.text.toString()
-                    db.collection("Category").document(categoryModel.key?:"")
-                        .set(categoryModel)
-                        .addOnSuccessListener {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Category Add Successfully",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }.addOnFailureListener {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Category Not Added",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                }
-                else{
-                    if (this::imageUri !=null){
-                        binding?.llLoader?.visibility = View.VISIBLE
-                        val ref = storageRef.reference.child(Calendar.getInstance().timeInMillis.toString())
-                        var uploadTask = imageUri?.let {it1 -> ref.putFile(it1) }
-                        uploadTask?.continueWithTask{ task ->
-                            if (!task.isSuccessful) {
-                                task.exception?.let {
-                                    binding?.llLoader?.visibility = View.GONE
-
-                                    throw it
-                                }
-                            }
-                            ref.downloadUrl
-                        }?.addOnCompleteListener { task ->
-                            binding?.llLoader?.visibility = View.GONE
-
-                            System.out.println("in on complete listener")
-                            if (task.isSuccessful) {
-                                val downloadUri = task.result
-                                categoryModel.image = downloadUri.toString()
-                                db.collection(collectionName).add(CategoryModel(
-                                    key = "",
-                                    name = binding.etAddCategory.text.toString(),
-                                    image = downloadUri.toString()
-                                ))
-                                    .addOnSuccessListener {
-                                        mainActivity.navController.popBackStack()
-                                    }.addOnFailureListener {
-
-                                    }
-
-                            }
-                        }
-                    } else{
-
-                    }
-                }*/
-
-
-
-
                 }
             }
 
@@ -225,6 +167,7 @@ class AddFragmentCategories : Fragment(){
         if(isupdate){
             db.collection(collectionName).document(categoryModel.key?:"").set(categoryModel)
                 .addOnSuccessListener {
+                    binding?.llLoader?.visibility = View.GONE
                     mainActivity.navController.popBackStack()
                 }.addOnFailureListener {
 
@@ -232,6 +175,8 @@ class AddFragmentCategories : Fragment(){
         }else{
             db.collection(collectionName).add(categoryModel)
                 .addOnSuccessListener {
+                    binding?.llLoader?.visibility = View.GONE
+
                     mainActivity.navController.popBackStack()
                 }.addOnFailureListener {
 

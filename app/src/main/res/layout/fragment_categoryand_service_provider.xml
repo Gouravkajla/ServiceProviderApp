@@ -15,11 +15,21 @@
       android:layout_marginTop="150dp"
       />
     <Button
+        android:id="@+id/btnServiceProvide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="service Provider"
         android:layout_below="@id/btncategories"
         android:layout_centerHorizontal="true"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnServiceProvide"
+        android:layout_centerHorizontal="true"
+        android:text="Customer List"
+        android:id="@+id/btnCustomer"
+
         />
 
 </RelativeLayout>

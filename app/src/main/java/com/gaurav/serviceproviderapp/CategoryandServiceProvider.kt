@@ -43,6 +43,12 @@ class CategoryandServiceProvider : Fragment() {
        binding.btncategories.setOnClickListener {
            mainActivity.navController.navigate(R.id.fragmentCategories)
        }
+        binding.btnServiceProvide.setOnClickListener {
+           mainActivity.navController.navigate(R.id.fragmentServiceProvider)
+       }
+        binding.btnCustomer.setOnClickListener {
+            mainActivity.navController.navigate(R.id.fragmentCustomerList)
+        }
         return (binding.root)
     }
 

@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete">Delete</string>
     <string name="add">Add</string>
+    <string name="accept_provider">Accept Provider</string>
+    <string name="accept_provider_msg">Do you want to accept the provider?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
